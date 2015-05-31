@@ -85,12 +85,8 @@ var Engine = (function(global) {
 
     //check collisions
     function checkCollisions(){
-        //player made it to the water
-        if (player.posy <= 1) {
-            reset();
-        }
         //check all enemies
-        for (enemy in allEnemies){
+        for (var enemy in allEnemies){
             if (allEnemies[enemy].posy === player.posy &&
                 Math.abs((allEnemies[enemy].x - player.x)) < 80){
                 reset();

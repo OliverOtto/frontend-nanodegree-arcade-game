@@ -18,7 +18,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    this.x = this.x + this.speed *dt;
+    this.x = this.x + this.speed * dt;
 
     // 505 is the with of the canvase
 
@@ -38,30 +38,34 @@ Enemy.prototype.initialize = function() {
     //look for box sizes
     //
     this.x = -101;
+    this.posy = Math.round(Math.random() * 2 + 2);
     this.y = this.posy * 83 - 106 ;
-    this.posy = Math.round(Math.random() *2 + 2);
-    this.speed = 100;
 
-}
+    // randomiozed speed
+    this.speed = (Math.random() * 300) + 100;
+
+};
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(){
-    this.sprite = 'images/char-boy.png'
-}
+    this.sprite = 'images/char-boy.png';
+};
 //Player update function
 Player.prototype.update = function(){
     //grid postiton transformation
     this.x = this.posx * 101 - 101;
     this.y = this.posy * 83 - 92;
-}
+};
 //Player render function
 Player.prototype.render = function(){
      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 //player handle input function - input is done via eventListener
 Player.prototype.handleInput = function(input){
     // use grid for proper positioning
+    if (input === 'up' && this.posy === 2)
+        this.initialize();
     switch(input) {
         case 'left':
             if (this.posx > 1)
@@ -80,13 +84,13 @@ Player.prototype.handleInput = function(input){
                 this.posy = this.posy + 1;
             break;
     }
-}
+};
 //initialize Player
 Player.prototype.initialize = function(){
     //base position for player in grid
     this.posx = 3;
     this.posy = 6;
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies

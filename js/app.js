@@ -1,3 +1,4 @@
+"use strict";
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -9,7 +10,7 @@ var Enemy = function() {
 
     //initialize new Enemy
     this.initialize();
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -25,13 +26,13 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 505){
         this.initialize();
     }
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
-}
+};
 
 //Initialize Enemy
 Enemy.prototype.initialize = function() {

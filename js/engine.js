@@ -57,7 +57,7 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
-    };
+    }
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -85,7 +85,11 @@ var Engine = (function(global) {
 
     //check collisions
     function checkCollisions(){
-        //checkk all enemies
+        //player made it to the water
+        if (player.posy <= 1) {
+            reset();
+        }
+        //check all enemies
         for (enemy in allEnemies){
             if (allEnemies[enemy].posy === player.posy &&
                 Math.abs((allEnemies[enemy].x - player.x)) < 80){
